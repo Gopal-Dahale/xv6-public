@@ -27,6 +27,9 @@ OBJS = \
 	uart.o\
 	vectors.o\
 	vm.o\
+	uspinlock.o\
+	barrier.o\
+	semaphore.o\
 
 # Cross-compiling (e.g., on Mac OS X)
 # TOOLPREFIX = i386-jos-elf
@@ -184,6 +187,11 @@ UPROGS=\
 	_greetings\
 	_myyear\
 	_printLines\
+	_test_toggle\
+	_test_counters\
+	_test_waitpid\
+	_test_barrier\
+	_test_sem\
 	
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

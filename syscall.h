@@ -21,3 +21,19 @@
 #define SYS_mkdir 20
 #define SYS_close 21
 #define SYS_myyear 22
+/*----------xv6 sync lab----------*/
+#define SYS_ucounter_init 22
+#define SYS_ucounter_get 23
+#define SYS_ucounter_set 24
+#define SYS_uspinlock_init 25
+#define SYS_uspinlock_acquire 26
+#define SYS_uspinlock_release 27
+#define SYS_ucv_sleep 28
+#define SYS_ucv_wakeup 29
+#define SYS_barrier_init 30
+#define SYS_barrier_check 31
+#define SYS_waitpid 32
+#define SYS_sem_init 33
+#define SYS_sem_up 34
+#define SYS_sem_down 35
+/*----------xv6 sync lab end----------*/
