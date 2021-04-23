@@ -121,7 +121,7 @@ int wait(void);
 void wakeup(void *);
 void yield(void);
 /*----------xv6 sync lab----------*/
-void ucv_sleep(void *, int);
+void ucv_sleep(int, int);
 int waitpid(int);
 /*----------xv6 sync lab end----------*/
 

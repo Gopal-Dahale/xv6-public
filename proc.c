@@ -548,7 +548,7 @@ void procdump(void)
 
 // Atomically release uspinlock and sleep on chan.
 // Reacquires upsinlock when awakened.
-void ucv_sleep(void *chan, int index)
+void ucv_sleep(int chan, int index)
 {
   struct proc *p = myproc();
   if (p == 0)
@@ -562,7 +562,7 @@ void ucv_sleep(void *chan, int index)
   // cprintf("Released uspinlock\n");
 
   // Go to sleep
-  p->chan = chan;
+  p->chan = (void *)chan;
   p->state = SLEEPING;
   // cprintf("Changed state to SLEEPING\n");
   // cprintf("Start of sched()\n");

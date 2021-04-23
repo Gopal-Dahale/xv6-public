@@ -198,7 +198,7 @@ int sys_ucv_sleep(void)
     cprintf("Kernel: System call returning -1\n");
     return -1;
   }
-  ucv_sleep((void *)&variable, index);
+  ucv_sleep(variable, index);
   return 1;
 }
 
