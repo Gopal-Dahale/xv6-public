@@ -6,18 +6,34 @@
 #include "barrier.h"
 
 //define any variables needed here
-
-int
-barrier_init(int n)
+typedef struct __barrier_t
 {
-  //to be done
+  int n;              // Number of processes
+  int c;              // Number of invokes
+  int chan;           // Channel on which processes sleep
+  struct spinlock lk; // SpinLock
+} barrier_t;
+
+barrier_t barrier;
+
+int barrier_init(int n)
+{
+  barrier.n = n;
+  barrier.c = 0;
+  barrier.chan = 1;
+  char *name = "Barrier";
+  initlock(&barrier.lk, name);
   return 0;
 }
 
-int
-barrier_check(void)
+int barrier_check(void)
 {
-  //to be done
+  acquire(&barrier.lk);
+  barrier.c++;
+  while (barrier.c < barrier.n)
+    sleep((void *)&barrier.chan, &barrier.lk);
+  wakeup((void *)&barrier.chan);
+  release(&barrier.lk);
   return 0;
 }
 
